@@ -1,50 +1,51 @@
 #include<iostream>
-#include<conio.h>
-
 
 using namespace std;
 
-class vector
+
+class complex
 {
+	private:
+		int real;
+		int imaginary;
+		
 	
 	public:
-	int x,y;
-	
-	vector()
+	complex(int r=0,int i=0)
 	{
-	};
-	
-	vector (int a,int b)
-	{
-		x=a;
-		y=b;
+		real=r;
+		imaginary=i;
 	}
 	
+	void print()
+	{
+		cout<<real<<" +"<<imaginary<<"i"<<endl;
+		
+	}
 	
-	vector operator+(const vector& parameter);
+	complex operator +(complex c)
+    {
+    	complex temp;
+    	
+    	temp.real=real+c.real;
+    	temp.imaginary=imaginary+c.imaginary;
+    	return temp;
+    	
+	}
+	};
 	
 	
-};
+	int main()
+	{
+		complex c1(5,6);
+		complex c2(4,3);
+		complex c3=c1+c2; //c3=c1(addc2)
+		
+		c1.print();
+		c2.print();
+		c3.print();
+		
+		
+		return 0;
+	}
 
-vector vector::operator+(const vector& parameter)
-{
-	vector temp;
-	temp.x=x+parameter.x;
-	temp.y=y+parameter.y;
-	return temp;
-}
-
-int main()
-{
-	vector vec1(4,2);
-	vector vec2(2,2);
-	vector result;
-	
-	result=vec1+vec2;
-	
-	cout<<result.x<<endl;
-	cout<<result.y;
-	
-	
-	getch();
-}
